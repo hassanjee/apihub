@@ -48215,6 +48215,8 @@ paths:
                     success: true
   /healthcheck:
     get:
+      tags:
+        - ⛑️ System Healthcheck
       summary: ⛑️ healthcheck
       description: >-
         This API endpoint is commonly used to determine the health status or
@@ -48317,3 +48319,5 @@ tags:
       database with initial data.
   - name: 🚫 Danger Zone
     description: '**WARNING: Sensitive Operations ⚠️**'
+  - name: ⛑️ System Healthcheck 
+    description: 'To Check System is Live'
