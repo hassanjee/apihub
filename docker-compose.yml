@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   backend:
     image: freeapi-server
     build: .
     ports:
-      - 8080:8080
+      - 8085:8080
     volumes:
       - ./:/usr/src/freeapi
       - /usr/src/freeapi/node_modules
@@ -17,9 +15,20 @@ services:
     image: mongo
     container_name: mongodb
     volumes:
-      - data:/data/db
+      - mongo_one_data:/data/db
     ports:
       - 27017:27017
 
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    restart: always
+    depends_on:
+      - mongodb
+
 volumes:
-  data:
+  mongo_one_data:
